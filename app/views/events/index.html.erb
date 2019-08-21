@@ -1,0 +1,28 @@
+
+<% if user_signed_in? %>
+<h1> FUTURE EVENTS </h1></br>
+
+<% @events.each do |event|%>
+    <p>Title: <%=event.title%></br>
+       Location: <%=event.location%></br>
+       Start date: <%=event.start_date%></br>
+       Duration: <%= event.duration %> minutes </br>
+       Price: <%=event.price%> $</br>
+       Description: <%=event.description%></br>
+       <%= link_to "View more", event_path(event.id) %>
+   </p>
+
+<%end%>
+<% else %>
+	<h1> Too see future events, please </h1>
+	<li>    
+      <%= link_to "Sign in", new_user_session_path %>
+    </li>
+
+    <h1> OR </h1>
+    <li>
+      <%= link_to "Sign up", new_user_registration_path %>
+    </li>
+
+
+<% end %>
